@@ -1,0 +1,23 @@
+  diun:
+    container_name: dium
+    image: crazymax/diun:latest
+    command: serve
+    logging:
+      driver: json-file
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+      - DIUN_WATCH_WORKERS=20
+      - DIUN_WATCH_SCHEDULE=0 */6 * * *
+      - DIUN_WATCH_JITTER=30s
+      - DIUN_PROVIDERS_DOCKER=true
+      - LOG_JSON=true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${BASE_PATH}/diun:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - diun.enable=true
+    restart: always
