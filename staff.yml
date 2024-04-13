@@ -1,0 +1,17 @@
+services:
+  autoheal:
+    extends: autoheal.yml
+    restart: always
+  diun:
+    extends: diun.yml
+    restart: always
+  kuma-uptime:
+    extends: kuma.yml
+    restart: always
+  nginxproxymanager:
+    extends: ngnixpm.yml
+    restart: always
+
+networks:
+  media_cli_ntk:
+    external: true

@@ -1,0 +1,19 @@
+service:
+  uptime-kuma:
+    container_name: uptime-kuma
+    image: elestio/uptime-kuma:latest
+    hostname: kuma.${HOSTNAME}
+    logging:
+      driver: json-file
+    ports:
+      - 3001:3001
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIG_BASE_PATH}/uptime-kuma:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
