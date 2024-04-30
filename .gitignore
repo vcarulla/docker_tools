@@ -132,4 +132,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#DuckDns
+duckdns/
+
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,git,dotenv,visualstudiocode,vim
